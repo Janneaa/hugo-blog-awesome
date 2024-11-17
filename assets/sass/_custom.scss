@@ -1,0 +1,59 @@
+/***** FONTIT ******/
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/Bitter/static/Bitter-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 600;
+  src: url(fonts/Bitter/static/Bitter-Bold.ttf) format('truetype');
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Bitter';
+    font-weight: 600;
+}
+
+
+/***** ETUSIVU ******/
+h3.posts-item-note, h4.post-item-title {
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+div.author img.author-avatar {
+    width: 100px;
+    height: 100px;
+}
+
+
+/***** BLOGIPOSTAUS ******/
+header.header {
+    margin-top: 5em;
+}
+.header h1.header-title {
+    font-size: 2.1em;
+    margin-bottom: 10px;
+}
+div.post-meta {
+    margin-bottom: 10px;
+}
+
+div.page-content h2 {
+    font-size: 24px;
+}
+
+.page-content img[src$='#floatleft'] {
+	float: left;
+    margin-right: 10px
+}
+
+.page-content img[src$='#floatright'] {
+	float: right;
+    margin-left: 10px;
+}

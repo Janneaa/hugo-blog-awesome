@@ -1,4 +1,6 @@
+/*******************/
 /***** FONTIT ******/
+/*******************/
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Bitter';
@@ -13,26 +15,74 @@
   font-weight: 600;
   src: url(fonts/Bitter/static/Bitter-Bold.ttf) format('truetype');
 }
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/Inter/static/Inter_18pt-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  src: url(fonts/Inter/static/Inter_18pt-Italic.ttf) format('truetype');
+}
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url(fonts/Inter/static/Inter_18pt-Bold.ttf) format('truetype');
+}
 
-h1, h2, h3, h4, h5 {
-    font-family: 'Bitter';
-    font-weight: 600;
+/*********************/
+/***** YLÄLAITA ******/
+/*********************/
+.header-author-avatar a {
+    display: block;
+}
+.header-author-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    object-fit: cover;
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+        margin: 0 auto;
+        text-align: center;
+    }
 }
 
 
+/********************/
 /***** ETUSIVU ******/
-h3.posts-item-note, h4.post-item-title {
-    font-family: 'Roboto';
-    font-weight: 400;
+/********************/
+div.author {
+    h2 {
+        font-family: 'Bitter';
+    }
+    img.author-avatar {
+        width: 100px;
+        height: 100px;
+    }
 }
 
-div.author img.author-avatar {
-    width: 100px;
-    height: 100px;
-}
 
-
+/*************************/
 /***** BLOGIPOSTAUS ******/
+/*************************/
+div.page-content {
+    h1, h2, h3, h4, h5 {
+        font-family: 'Bitter';
+        font-weight: 600;
+    }
+    h2 {
+        font-size: 24px;
+    }
+}
 header.header {
     margin-top: 5em;
 }
@@ -42,10 +92,6 @@ header.header {
 }
 div.post-meta {
     margin-bottom: 10px;
-}
-
-div.page-content h2 {
-    font-size: 24px;
 }
 
 .page-content img[src$='#floatleft'] {

@@ -1,0 +1,8 @@
+<!-- {{ $avatar_img := .Site.Params.author.avatar }}
+{{ $avatar_img_alt := .Site.Params.author.name }}
+{{ $image := resources.Get $avatar_img }}
+{{ with $image }}
+{{ $image := $image.Fill "80x80 webp q95" }}
+    <img class="header-author-avatar" src="{{ $image.RelPermalink }}" alt="{{ $avatar_img_alt }}" width="80" height="80" />
+{{ end }}
+ -->

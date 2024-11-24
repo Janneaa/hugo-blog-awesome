@@ -22,7 +22,7 @@
       }
     }
     @include media-query($on-mobile) {
-      padding-top: .3rem;
+      padding-top: 0;
 
     }
   }
@@ -144,7 +144,7 @@
       right: 0;
       z-index: 2;
       text-align: center;
-      height: 50px;
+      height: 90px;
       background-color: $white;
       border-bottom: 1px solid $light;
 
@@ -157,7 +157,7 @@
         display: block;
         position: absolute;
         right: 0;
-        margin: .7rem .3rem 0 0;
+        margin: -.75rem .7rem 0 0;
         cursor: pointer;
         text-align: center;
         z-index: 1;

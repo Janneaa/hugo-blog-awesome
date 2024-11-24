@@ -98,7 +98,7 @@ div.author {
 /*************************/
 /***** BLOGIPOSTAUS ******/
 /*************************/
-div.page-content {
+.page-content {
     h1, h2, h3, h4, h5 {
         font-family: 'Bitter';
         font-weight: 600;
@@ -108,7 +108,10 @@ div.page-content {
     }
 }
 header.header {
-    margin-top: 5em;
+    margin-top: 4em;
+    @include media-query($on-mobile) {
+      margin-top: 7em;
+    }
 }
 .header h1.header-title {
     font-size: 2.1em;

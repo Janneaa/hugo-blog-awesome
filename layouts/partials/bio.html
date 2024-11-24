@@ -1,8 +1,8 @@
-{{ $avatar_img := .Site.Params.author.avatar }}
+<!-- {{ $avatar_img := .Site.Params.author.avatar }}
 {{ $avatar_img_alt := .Site.Params.author.name }}
-{{ $image := resources.Get $avatar_img }}
+{{ $image := resources.Get $avatar_img }} -->
 <div class="author">
-    {{ with $image }}
+    <!-- {{ with $image }}
     {{ if eq .MediaType.SubType "svg" }}
     <svg width="25em" height="25em" xmlns="http://www.w3.org/2000/svg">
         <image width="25em" height="25em" href="{{ $image.RelPermalink }}" />
@@ -12,7 +12,22 @@
     <img class="author-avatar" src="{{ $image.RelPermalink }}" alt="{{ $avatar_img_alt }}" width="{{ .Width }}"
         height="{{ .Height }}" />
     {{ end }}
-    {{ end }}
+    {{ end }} -->
     <h2 class="author-name">{{ .Site.Params.author.intro }}</h2>
-    <p class="author-bio">{{ .Site.Params.author.description }}</p>
+    <!-- <p class="author-bio">{{ .Site.Params.author.description }}</p> -->
+     <div class="author-bio-large">
+        <p>Here's a few ways I'd describe myself:</p>
+        <ul>
+            <li>Father of two wonderful girls 👧👧</li>
+            <li>Long-distance runner since 2011 🏃‍♂️</li>
+            <li>Snowboarder since 1997 🏂</li>
+            <li>Amateur photographer 📷</li>
+            <li>Currently working as a data engineer
+                <ul>
+                    <li>Mostly with Azure and SQL Server</li>
+                </ul>
+            </li>
+        </ul>
+        <p>I blog about all kinds of stuff that I find interesting.</p>
+    </div>
 </div>

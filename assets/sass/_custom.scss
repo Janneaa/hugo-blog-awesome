@@ -40,19 +40,35 @@
 /*********************/
 /***** YLÄLAITA ******/
 /*********************/
-.header-author-avatar a {
-    display: block;
-}
-.header-author-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 100%;
-    object-fit: cover;
-    img {
+nav.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    a.logo {
+        text-decoration: none;
+    }
+    .author-name {
+        font-family: 'Bitter';
+        font-size: 22px;
+        font-weight: 600;
+        color: $black;
+        line-height: $base-line-height + 0.4;
+        padding: 0 .5rem;
+        letter-spacing: 0.015rem;
+    }
+    .header-author-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        object-fit: cover;
         max-width: 100%;
         vertical-align: middle;
         margin: 0 auto;
         text-align: center;
+    }
+    .trigger {
+        font-size: 18px;
     }
 }
 
@@ -61,13 +77,21 @@
 /***** ETUSIVU ******/
 /********************/
 div.author {
-    h2 {
+    h2.author-name {
         font-family: 'Bitter';
+        font-size: 2em;
+        margin-bottom: 15px;
     }
     img.author-avatar {
         width: 100px;
         height: 100px;
     }
+    .author-bio-large {
+        margin: 0 auto;
+        max-width: 330px;
+        line-height: 1.688;
+        text-align: left;
+  }
 }
 
 
@@ -102,4 +126,24 @@ div.post-meta {
 .page-content img[src$='#floatright'] {
 	float: right;
     margin-left: 10px;
+}
+
+
+/***********************/
+/***** TUMMA TILA ******/
+/***********************/
+@mixin dark-mode {
+    nav.menu .author-name {
+        color: $dark-white;
+    }
+}
+// support JS disabled environment with media query
+@media (prefers-color-scheme: dark) {
+  // use "light" class to avoid style conflicts in js enabled environment
+  html:not(.light) {
+    @include dark-mode()
+  }
+}
+html.dark {
+  @include dark-mode()
 }

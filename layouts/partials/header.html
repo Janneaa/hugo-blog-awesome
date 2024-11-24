@@ -1,7 +1,11 @@
 <div class="navbar" role="navigation">
     <nav class="menu" aria-label="Main Navigation">
-        <a href="{{ .Site.Home.Permalink }}" class="logo">
+        <!-- <a href="{{ .Site.Home.Permalink }}" class="logo">
             {{ partial "svgs/home.svg" (dict "height" 25 "width" 25) . }}
+        </a> -->
+        <a href="{{ .Site.Home.Permalink }}" class="logo">
+            <img class="header-author-avatar" src="/avatar_80.webp" alt="Janne Anttila" width="80" height="80" />
+            <span class="author-name">Janne Anttila</span>
         </a>
         <input type="checkbox" id="menu-trigger" class="menu-trigger" />
         <label for="menu-trigger">

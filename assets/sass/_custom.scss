@@ -152,3 +152,10 @@ div.post-meta {
 html.dark {
   @include dark-mode()
 }
+
+/***********************/
+/***** KOODILOHKO ******/
+/***********************/
+div.highlight {
+  font-size: 95%;
+}

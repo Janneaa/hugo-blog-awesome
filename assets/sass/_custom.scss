@@ -120,7 +120,11 @@ header.header {
     margin-bottom: 10px;
 }
 div.post-meta {
+    margin-top: 5px;
     margin-bottom: 10px;
+    time {
+      margin-right: 1em;
+    }
 }
 
 .page-content img[src$='#floatleft'] {
@@ -131,6 +135,53 @@ div.post-meta {
 .page-content img[src$='#floatright'] {
 	float: right;
     margin-left: 10px;
+}
+
+.post-tags, .post-meta {
+    display: inline-block;
+}
+
+.post-tags ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post-tags li {
+    margin-right: 10px;
+}
+
+.post-tags a, html.dark .post-tags a {
+    text-decoration: none;
+    color: #6b7886;
+}
+
+
+/***********************/
+/***** KOODILOHKO ******/
+/***********************/
+div.highlight {
+  font-size: 95%;
+}
+
+
+/*************************/
+/***** KÄNNYKKÄTILA ******/
+/*************************/
+
+@media screen and (max-width: 768px) {
+    div.navbar {
+        padding-top: 0;
+        padding-left: 0;
+    }
+    nav.menu {
+        position: static;
+    }
+    header.header {
+        margin-top: 1.7em;
+    }
 }
 
 
@@ -151,11 +202,4 @@ div.post-meta {
 }
 html.dark {
   @include dark-mode()
-}
-
-/***********************/
-/***** KOODILOHKO ******/
-/***********************/
-div.highlight {
-  font-size: 95%;
 }

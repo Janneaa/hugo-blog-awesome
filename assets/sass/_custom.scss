@@ -176,8 +176,9 @@ div.highlight {
         padding-top: 0;
         padding-left: 0;
     }
-    nav.menu {
+    nav.menu, html.dark .navbar .menu {
         position: static;
+        border-color: transparent;
     }
     header.header {
         margin-top: 1.7em;

@@ -108,6 +108,9 @@ div.author {
         font-size: 24px;
     }
 }
+.post-item h4.post-item-title {
+    font-family: 'Inter';
+}
 header.header {
     margin-top: 4em;
     @include media-query($on-mobile) {

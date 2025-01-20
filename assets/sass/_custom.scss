@@ -186,6 +186,14 @@ div.highlight {
     header.header {
         margin-top: 1.7em;
     }
+
+    // Korjauksia hampurilaisvalikkoon
+    label[for=menu-trigger] {
+        z-index: 3;
+    }
+    div.trigger {
+        z-index: 2;
+    }
 }
 
 

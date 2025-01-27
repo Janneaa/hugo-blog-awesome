@@ -1,0 +1,12 @@
+{{ with .Get "src" }}
+  {{ $image := resources.Get . }}
+  {{ $width := $.Get "width" }}
+  {{ $webp := $image.Process "webp" }}
+  {{ $processed := $webp.Resize (printf "%sx" $width) }}
+  <figure style="width: {{ $width }}px" {{ with $.Get "class" }}class="{{ . }}"{{ end }}>
+      <picture>
+          <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" loading="lazy" />
+      </picture>
+      <figcaption>{{ $.Get "caption" }}</figcaption>
+  </figure>
+{{ end }}

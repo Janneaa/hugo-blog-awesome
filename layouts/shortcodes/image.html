@@ -1,0 +1,7 @@
+{{ with .Get "src" }}
+  {{ $image := resources.Get . }}
+  {{ $width := $.Get "width" }}
+  {{ $webp := $image.Process "webp" }}
+  {{ $processed := $webp.Resize (printf "%sx" $width) }}
+  <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" {{ with $.Get "class" }}class="{{ . }}"{{ end }} loading="lazy" />
+{{ end }}

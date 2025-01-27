@@ -130,16 +130,23 @@ div.post-meta {
     }
 }
 
-.page-content img[src$='#floatleft'] {
-	float: left;
-    margin-right: 10px
-}
+.page-content {
+    .floatleft, img[src$='#floatleft'] {
+        float: left;
+        margin-right: 10px
+    }
 
-.page-content img[src$='#floatright'] {
-	float: right;
-    margin-left: 10px;
+    .floatright, img[src$='#floatright'] {
+        float: right;
+        margin-left: 10px;
+    }
+    a.image-link {
+        display: block;
+        &[target="_blank"]::after {
+            content: none;
+        }
+    }
 }
-
 .post-tags, .post-meta {
     display: inline-block;
 }

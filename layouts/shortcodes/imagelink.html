@@ -1,9 +1,21 @@
 {{ with .Get "src" }}
   {{ $image := resources.Get . }}
-  {{ $width := $.Get "width" }}
-  {{ $webp := $image.Process "webp" }}
-  {{ $processed := $webp.Resize (printf "%sx" $width) }}
-  <a href="{{ $image.Permalink }}" target="_blank" class="image-link" style="width: {{ $width }}px">
-    <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" {{ with $.Get "class" }}class="{{ . }}"{{ end }} loading="lazy" />
-  </a>
+  {{ $width := $.Get "width" | default "200" }}
+  {{ $height := $.Get "height" | default "" }}
+  {{ $processed := $image }}
+
+  {{ if and $image (eq $image.ResourceType "image") }}
+    {{ if or (ne $width "") (ne $height "") }}
+      {{ $resizeParams := printf "%sx%s webp" $width $height }}
+      {{ $processed = $image.Resize $resizeParams }}
+    {{ else }}
+      {{ $processed = $image.Resize "x webp" }}  <!-- Keeps original size -->
+    {{ end }}
+
+    <a href="{{ $image.Permalink }}" target="_blank" {{ with $.Get "class" }}class="image-link {{ . }}"{{ end }} style="width: {{ $width }}px">
+      <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" {{ with $.Get "class" }}class="{{ . }}"{{ end }} loading="lazy" />
+    </a>
+  {{ else }}
+    <p style="color: red;">Error: Image "{{ . }}" not found or not an image resource.</p>
+  {{ end }}
 {{ end }}

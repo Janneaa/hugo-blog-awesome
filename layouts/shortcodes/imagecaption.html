@@ -1,12 +1,24 @@
 {{ with .Get "src" }}
   {{ $image := resources.Get . }}
-  {{ $width := $.Get "width" }}
-  {{ $webp := $image.Process "webp" }}
-  {{ $processed := $webp.Resize (printf "%sx" $width) }}
-  <figure style="width: {{ $width }}px" {{ with $.Get "class" }}class="{{ . }}"{{ end }}>
+  {{ $width := $.Get "width" | default "200" }}
+  {{ $height := $.Get "height" | default "" }}
+  {{ $processed := $image }}
+
+  {{ if and $image (eq $image.ResourceType "image") }}
+    {{ if or (ne $width "") (ne $height "") }}
+      {{ $resizeParams := printf "%sx%s webp" $width $height }}
+      {{ $processed = $image.Resize $resizeParams }}
+    {{ else }}
+      {{ $processed = $image.Resize "x webp" }}  <!-- Keeps original size -->
+    {{ end }}
+
+    <figure style="width: {{ $width }}px" {{ with $.Get "class" }}class="{{ . }}"{{ end }}>
       <picture>
-          <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" loading="lazy" />
+        <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" {{ with $.Get "class" }}class="{{ . }}"{{ end }} loading="lazy" />
       </picture>
       <figcaption>{{ $.Get "caption" }}</figcaption>
-  </figure>
+    </figure>
+  {{ else }}
+    <p style="color: red;">Error: Image "{{ . }}" not found or not an image resource.</p>
+  {{ end }}
 {{ end }}

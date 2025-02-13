@@ -1,14 +1,15 @@
 {{ with .Get "src" }}
   {{ $image := resources.Get . }}
+  {{ $width := $.Get "width" | default "200" }}
+  {{ $height := $.Get "height" | default "" }}
+  {{ $processed := $image }}
 
   {{ if and $image (eq $image.ResourceType "image") }}
-    {{ $width := $.Get "width" }}
-    
-    {{ $webp := $image.Process "webp" }}
-    {{ $processed := $webp }}
-
-    {{ if $width }}
-      {{ $processed = $webp.Resize (printf "%sx" $width) }}
+    {{ if or (ne $width "") (ne $height "") }}
+      {{ $resizeParams := printf "%sx%s webp" $width $height }}
+      {{ $processed = $image.Resize $resizeParams }}
+    {{ else }}
+      {{ $processed = $image.Resize "x webp" }}  <!-- Keeps original size -->
     {{ end }}
 
     <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" {{ with $.Get "class" }}class="{{ . }}"{{ end }} loading="lazy" />

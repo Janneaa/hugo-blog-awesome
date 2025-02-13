@@ -1,7 +1,18 @@
 {{ with .Get "src" }}
   {{ $image := resources.Get . }}
-  {{ $width := $.Get "width" }}
-  {{ $webp := $image.Process "webp" }}
-  {{ $processed := $webp.Resize (printf "%sx" $width) }}
-  <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" {{ with $.Get "class" }}class="{{ . }}"{{ end }} loading="lazy" />
+
+  {{ if and $image (eq $image.ResourceType "image") }}
+    {{ $width := $.Get "width" }}
+    
+    {{ $webp := $image.Process "webp" }}
+    {{ $processed := $webp }}
+
+    {{ if $width }}
+      {{ $processed = $webp.Resize (printf "%sx" $width) }}
+    {{ end }}
+
+    <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" {{ with $.Get "class" }}class="{{ . }}"{{ end }} loading="lazy" />
+  {{ else }}
+    <p style="color: red;">Error: Image "{{ . }}" not found or not an image resource.</p>
+  {{ end }}
 {{ end }}

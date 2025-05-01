@@ -134,6 +134,11 @@ div.post-meta {
 }
 
 .page-content {
+    img {
+        padding: 5px;
+        border: 1px solid #ddd;
+    }
+
     .floatleft, img[src$='#floatleft'] {
         float: left;
         margin-right: 10px

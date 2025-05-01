@@ -152,15 +152,18 @@ div.post-meta {
         float: right;
         margin-left: 10px;
     }
+
     img.extramargin-top, figure.extramargin-top {
         margin-top: 25px;
     }
+
     a.image-link {
         display: block;
         &[target="_blank"]::after {
             content: none;
         }
     }
+    
     a.dimbox-link {
         display: block;
     }

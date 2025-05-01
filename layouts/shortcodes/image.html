@@ -1,7 +1,10 @@
 {{ with .Get "src" }}
-  {{ $image := resources.Get . }}
+  {{ $src := $.Get "src" }}
+  {{ $image := resources.Get (print "images/" $src) }}
   {{ $width := $.Get "width" | default "200" }}
   {{ $height := $.Get "height" | default "" }}
+  {{ $caption := $.Get "caption" }}
+  {{ $figwidth := add (int $width) 10 }}
   {{ $processed := $image }}
 
   {{ if and $image (eq $image.ResourceType "image") }}
@@ -12,7 +15,12 @@
       {{ $processed = $image.Resize "x webp" }}  <!-- Keeps original size -->
     {{ end }}
 
-    <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" {{ with $.Get "class" }}class="{{ . }}"{{ end }} loading="lazy" />
+    <figure {{ with $.Get "class" }}class="{{ . }}"{{ end }} style="width: {{ $figwidth }}px;">
+      <img src="{{ $processed.Permalink }}" alt="{{ $.Get "alt" }}" loading="lazy" />
+      {{ if $caption }}
+        <figcaption>{{ $caption }}</figcaption>
+      {{ end }}
+    </figure>
   {{ else }}
     <p style="color: red;">Error: Image "{{ . }}" not found or not an image resource.</p>
   {{ end }}

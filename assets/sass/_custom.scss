@@ -139,6 +139,10 @@ div.post-meta {
         border: 1px solid #ddd;
     }
 
+    figure.noborder img {
+        border: none;
+    }
+
     .floatleft, img[src$='#floatleft'] {
         float: left;
         margin-right: 10px
@@ -153,6 +157,9 @@ div.post-meta {
         &[target="_blank"]::after {
             content: none;
         }
+    }
+    a.dimbox-link {
+        display: block;
     }
 }
 .post-tags, .post-meta {

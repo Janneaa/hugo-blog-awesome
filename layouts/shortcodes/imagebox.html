@@ -1,0 +1,23 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $caption := .Get "caption" }}
+{{ $width := .Get "width" | default "250" }}
+{{ $figwidth := add (int $width) 10 }}
+{{ $gallery := .Get "gallery" | default "" }}
+
+{{ $image := resources.Get (print "images/" $src) }}
+{{ if $image }}
+  {{ $thumb := $image.Resize (printf "%s webp" (print $width "x")) }}
+
+  <figure {{ with $.Get "class" }}class="{{ . }}"{{ end }} style="width: {{ $figwidth }}px;">
+    <a href="{{ $image.RelPermalink }}" class="dimbox-link"
+       {{ if $gallery }}data-dimbox="{{ $gallery }}"{{ else }}data-dimbox{{ end }}>
+      <img src="{{ $thumb.RelPermalink }}" alt="{{ $alt }}">
+    </a>
+    {{ if $caption }}
+      <figcaption>{{ $caption }}</figcaption>
+    {{ end }}
+  </figure>
+{{ else }}
+  <p style="color:red;">Image not found: {{ $src }}</p>
+{{ end }}

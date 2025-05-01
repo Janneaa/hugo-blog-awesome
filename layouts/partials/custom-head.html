@@ -1,1 +1,15 @@
-<!-- <img class="header-author-avatar" src="/avatar_80.webp" alt="Janne Anttila" width="80" height="80" /> -->
+<script defer src="https://umami-nu-two.vercel.app/script.js" data-website-id="720e3756-4896-4156-8600-d425b9f5834f"></script>
+
+{{/* Ladataan vain blogipostauksen frontmatterin css-määrityksen mukaiset tiedostot */}}
+{{- with .Params.css }}
+  {{- range . }}
+    <link rel="stylesheet" href="assets/css/{{ . }}">
+  {{- end }}
+{{- end }}
+
+{{/* Ladataan vain blogipostauksen frontmatterin js-määrityksen mukaiset tiedostot */}}
+{{- with .Params.js }}
+  {{- range . }}
+    <script src="assets/js/{{ . }}" defer></script>
+  {{- end }}
+{{- end }}

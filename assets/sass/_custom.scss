@@ -139,18 +139,21 @@ div.post-meta {
         border: 1px solid #ddd;
     }
 
-    figure.noborder img {
+    figure.no-border img {
         border: none;
     }
 
-    .floatleft, img[src$='#floatleft'] {
+    .float-left, img[src$='#float-left'] {
         float: left;
         margin-right: 10px
     }
 
-    .floatright, img[src$='#floatright'] {
+    .float-right, img[src$='#float-right'] {
         float: right;
         margin-left: 10px;
+    }
+    img.extramargin-top, figure.extramargin-top {
+        margin-top: 25px;
     }
     a.image-link {
         display: block;
